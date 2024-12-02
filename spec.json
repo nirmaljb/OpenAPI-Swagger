@@ -1,0 +1,67 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "OpenAPI 1.0.1"
+    },
+    "components": {
+      "schemas": {
+        "User": {
+          "type": "number",
+          "example": 18
+        }
+      },
+      "parameters": {
+  
+      }
+    },
+    "paths": {
+      "/users": {
+        "get": {
+          "parameters": [
+            {
+              "schema": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10,
+                "example": "abc123"
+              },
+              "required": true,
+              "name": "id",
+              "in": "query"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Retrive the user",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "123"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Nirmal"
+                      },
+                      "age": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "age"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
